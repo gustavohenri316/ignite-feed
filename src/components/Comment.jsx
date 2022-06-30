@@ -20,7 +20,7 @@ export function Comment() {
         </div>
         <footer>
           <button>
-            <ThumbsUp />
+            <ThumbsUp size={24}/>
             Aplaudir <span>20</span>
           </button>
         </footer>
