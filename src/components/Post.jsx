@@ -5,8 +5,6 @@ import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import { useState } from 'react'
 
-
-
 export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState(['Post muito bacana, hein?'])
   const [newCommentText, setNewCommentText] = useState('')
@@ -45,7 +43,7 @@ export function Post({ author, publishedAt, content }) {
     })
     setComments(commentsWithoutDeletedOne)
   }
-  
+
   const isNewCommentEmpty = newCommentText.length === 0
 
   return (
