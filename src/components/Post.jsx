@@ -11,13 +11,17 @@ export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState(['Post muito bacana, hein?'])
   const [ newCommentText, setNewCommentText] = useState('')
 
-  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+  const publishedDateFormatted = 
+  format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR,
   })
-  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
-    locale: ptBR,
-    addSuffix: true,
-  })
+  const publishedDateRelativeToNow = formatDistanceToNow(
+    publishedAt, 
+    {
+      locale: ptBR,
+      addSuffix: true,
+    }
+  )
   function handleNewCommentChange(event) {
     setNewCommentText(event.target.value)
   }
@@ -44,9 +48,9 @@ export function Post({ author, publishedAt, content }) {
       <div className={styles.content}>
         {content.map(line => {
           if (line.type === 'paragraph') {
-            return <p>{line.content}</p>
+            return <p key={line.content}>{line.content}</p>
           } else if (line.type === 'link') {
-            return <p><a href="#">{line.content}</a></p>
+            return <p key={line.content}><a href="#">{line.content}</a></p>
           }
         })}
       </div>
@@ -64,8 +68,8 @@ export function Post({ author, publishedAt, content }) {
         </footer>
       </form>
       <div className={styles.commentList}>
-        {comments.map(comment => {
-          return <Comment comentario={comment} />
+        {comments.map((comment) => {
+          return <Comment key={comment} comentario={comment} />
         })}
       </div>
     </article>
