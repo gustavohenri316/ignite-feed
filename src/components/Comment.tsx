@@ -3,7 +3,12 @@ import { useState } from 'react'
 import { Avatar } from './Avatar'
 import styles from './Comment.module.css'
 
-export function Comment({ comentario, onDeleteComment }) {
+interface CommentProps {
+  comentario: string
+  onDeleteComment: (comment: string) => void
+}
+
+export function Comment({ comentario, onDeleteComment }: CommentProps) {
   const [likeCount, setLikeCount] = useState(0)
 
   function handleDeleteComment() {
@@ -24,7 +29,7 @@ export function Comment({ comentario, onDeleteComment }) {
               <strong>Gustavo Henrique</strong>
               <time
                 title='11 de maio ás 08:13'
-                dataTime="2022-05-11 08:13:30"
+                dateTime="2022-05-11 08:13:30"
               >
                 Cerca de 1h atrás
               </time>
